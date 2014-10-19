@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string-array name="ns_menu_items_one">
+       
+        <item>Calendar</item>
+        <item>Myplacesonmap</item>
+        <item>Settings</item>
+        <item>Tellafriend</item>
+        <item>Feedback</item>
+    </string-array>
+    <array name="ns_menu_items_icon_one">
+       
+        <item>calendar</item>
+        <item>my_place</item>
+        <item>settings</item>
+        <item>tell_a_friend</item>
+        <item>feedback</item>
+        </array>
+        <string-array name="ns_menu_items_two">
+       <item>Calendar</item>
+        <item>Symptoms</item>
+        <item>Parameters</item>
+         <item>DiseaseDiagnosed</item>
+        <item>Medicines</item>
+        <item>Test</item>
+        <item>Prescription</item>
+        </string-array>
+        
+         <array name="ns_menu_items_icon_two">
+       <item>calendar</item>
+        <item>calendar</item>
+        <item>my_place</item>
+         <item>my_place</item>
+        <item>settings</item>
+        <item>tell_a_friend</item>
+        <item>feedback</item>
+        </array>
+</resources>

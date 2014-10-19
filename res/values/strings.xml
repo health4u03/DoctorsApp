@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Doctor</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Calendar">Doctor\'s Profile</string>
+    <string name="Myplacesonmap">Patients Login</string>
+    <string name="Settings">Add medicines</string>
+    <string name="Tellafriend">Statistics</string>
+    <string name="Feedback">Logout</string>
+    <string name="Symptoms">Symptoms</string>
+    <string name="Parameters">Parameters</string>
+    <string name="DiseaseDiagnosed">Disease Diagnosed</string>
+    <string name="Medicines">Suggested medicines</string>
+    <string name="Test">Tests</string>
+    <string name="Prescription">Prescription</string>
+    <string name="title_activity_doctors_profile">DoctorsProfile</string>
+    <string name="title_activity_patients_login">PatientsLogin</string>
+    <string name="title_activity_patients_profile">PatientsProfile</string>
+    <string name="title_activity_update__running_disease">Update_Running_disease</string>
+    <string name="title_activity_add_medicines_to_clinic">Add_medicines_to_clinic</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="title_activity_symptoms">Symptoms</string>
+    <string name="title_activity_paramters">Parameters</string>
+    <string name="title_activity_tests">Tests</string>
+    <string name="title_activity_disease_diagnosed">Disease Diagnosed</string>
+    <string name="title_activity_prescription">Prescription</string>
+    <string name="title_activity_medicines">Medicines</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+</resources>

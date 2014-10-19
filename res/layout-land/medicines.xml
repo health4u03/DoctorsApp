@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+        
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+        <TextView
+        android:id="@+id/textViewUserNamePatientPrescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#3498db"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+            android:textSize="25sp"
+        android:text="Welcome PatientName"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+    <ListView
+        android:id="@+id/listViewMedicines"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="50sp"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>

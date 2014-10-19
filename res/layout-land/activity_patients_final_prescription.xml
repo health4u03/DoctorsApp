@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textViewUserNamePatientPrescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center_horizontal"
+        android:text="Welcome PatientName"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#3498db"
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="100sp"
+        android:layout_marginRight="100sp"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Symptoms"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#3498db"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_prescription_symptoms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewSpymptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Fever"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textViewSpymptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Dry Cough"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="100sp"
+        android:layout_marginRight="100sp"
+        android:orientation="horizontal" 
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Parameters"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#3498db"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_prescription_parameters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+               android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewParameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High bp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textViewParameters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Parameter 2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="100sp"
+        android:layout_marginRight="100sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disease Diagnosed"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#3498db"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_prescription_disease_diagnosed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100sp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewDiseaseDiagnosed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disease 1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textViewDiseaseDiagnosed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Disease 2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginLeft="100sp"
+        android:layout_marginRight="100sp"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Medicines"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#3498db"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_prescription_medicines"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewMedicines"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Antacid"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Crocin"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginLeft="100sp"
+        android:layout_marginRight="100sp"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tests"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#3498db"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:id="@+id/linear_prescription_tests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewTests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test 1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textViewTests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:text="Test 2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_prescription_butoonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="30sp"
+        android:weightSum="2"
+        android:layout_marginLeft="200sp"
+        android:layout_marginRight="200sp"
+        android:gravity="bottom" 
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonSavePrescription"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_states"
+            android:text="Save"
+            android:layout_marginRight="50sp"
+            android:textColor="#ecf0f1"
+            android:textSize="25sp" />
+        
+          <Button
+            android:id="@+id/buttonLogoutPrescription"
+            android:layout_width="100sp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50sp"
+            android:background="@drawable/button_states"
+            android:text="Exit Patient"
+            android:textColor="#ecf0f1"
+            android:textSize="25sp" />
+        
+    </LinearLayout>
+
+</LinearLayout>

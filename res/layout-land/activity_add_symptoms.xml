@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="500sp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+     >
+
+    <TextView
+        android:id="@+id/textViewAddPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:textSize="25sp"
+        android:layout_marginTop="40sp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/editTextAddPopUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="25sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:background="@drawable/card_item"
+        android:layout_marginTop="25sp"
+        android:inputType="textPersonName" >
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/buttonAddPopUp"
+        android:layout_width="match_parent"
+                android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/button_states"
+        android:textSize="25sp"
+        android:textColor="#ecf0f1"
+        android:text="Add" />
+
+</LinearLayout>

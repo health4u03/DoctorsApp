@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.dh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"
+        android:orientation="vertical" >
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imageViewUserPhoto"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
+            android:src="@drawable/ic_launcher"
+            app:border="true"
+            app:border_color="@android:color/darker_gray"
+            app:border_width="3"
+            app:shadow="true" />
+
+        <Button
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100sp"
+            android:padding="10sp"
+            android:text="Set Image"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280sp"
+        android:layout_marginTop="30sp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:layout_width="280sp"
+            android:layout_height="wrap_content"
+            android:hint="Enter User Name"
+            android:textSize="25sp" />
+
+        <EditText
+            android:layout_width="280sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:hint="Enter Address"
+            android:textSize="25sp" />
+
+        <EditText
+            android:layout_width="280sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:hint="Contact No"
+            android:textSize="25sp" />
+
+        <EditText
+            android:layout_width="280sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:hint="Date of Birth"
+            android:textSize="25sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp" >
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Male"
+                android:textSize="25sp" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:textSize="25sp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonAddPatient"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
+            android:padding="10sp"
+            android:text="Done"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</LinearLayout>
