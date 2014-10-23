@@ -80,11 +80,11 @@ public class Final_new_Prescription extends Activity{
 		case R.id.add_print:
 
 			if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.KITKAT) {
-				Toast.makeText(getApplicationContext(), "This feature is not compatible", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "This feature needs Android 4.4 or above", Toast.LENGTH_SHORT).show();
 			}
 
 			// Get a PrintManager instance
-			PrintManager printManager = (PrintManager)getApplicationContext().getSystemService(Context.PRINT_SERVICE);
+			PrintManager printManager = (PrintManager)this.getSystemService(Context.PRINT_SERVICE);
 
 			// Set job name, which will be displayed in the print queue
 			String jobName = getString(R.string.app_name) + "_Document";
