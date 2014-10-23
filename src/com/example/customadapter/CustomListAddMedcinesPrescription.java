@@ -52,7 +52,7 @@ import android.widget.ToggleButton;
 	public long getItemId(int position) {
 		return position;
 	}
-
+	
 
 	public class ViewHolderMainHome {
 

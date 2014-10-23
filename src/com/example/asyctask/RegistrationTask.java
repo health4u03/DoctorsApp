@@ -18,13 +18,20 @@ import org.apache.http.util.EntityUtils;
 
 import com.example.datamodels.LoginModel;
 import com.example.datamodels.RegistrationModel;
+import com.example.datamodels.serialized.LoginResponse;
+import com.example.datamodels.serialized.RegistrationResponse;
+import com.example.dh.MainActivity;
 import com.example.dh.Registration;
 import com.example.dh.util.Constants;
 import com.google.gson.Gson;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class RegistrationTask extends AsyncTask<RegistrationModel, String, String>{
@@ -32,6 +39,8 @@ public class RegistrationTask extends AsyncTask<RegistrationModel, String, Strin
 	Activity mRegistration;
 	ProgressDialog pd;
 	String jsonResponseString;
+	SharedPreferences sp;
+	RegistrationModel objRegistrationModel;
 	
 	public RegistrationTask(Registration registration) {
 
@@ -48,18 +57,46 @@ public class RegistrationTask extends AsyncTask<RegistrationModel, String, Strin
 		pd.show();
 	}
 
+	@Override
+	protected void onPostExecute(String result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+		pd.dismiss();
+		Log.d("response json is ", "" + result);
+
+		Gson gson = new Gson();
+
+		RegistrationResponse response = gson.fromJson(result, RegistrationResponse.class);
+
+		pd.dismiss();
+
+		if (response.success == 1) {
+		Intent i = new Intent(mRegistration, MainActivity.class);
+		mRegistration.startActivity(i);
+		sp = PreferenceManager.getDefaultSharedPreferences(mRegistration);
+		Editor ed = sp.edit();
+		ed.putString("user_name_login", objRegistrationModel.getEmail());
+		ed.putString("password_login", objRegistrationModel.getPassword());
+		ed.apply();
+		//mLogin.overridePendingTransition(R.anim.side_down, R.anim.slide_up);
+		} else {
+//			username.setError("Enter valid details");
+//			password.setError(response.error_msg);
+		}
+	}
 	
 	@Override
 	protected String doInBackground(RegistrationModel... params) {
 
+		/*
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
 		
-		RegistrationModel objRegistrationModel = params[0];
+		objRegistrationModel = params[0];
 		
 		Log.d("username", ""+objRegistrationModel.getName());
 		Log.d("password", ""+objRegistrationModel.getPassword());
@@ -122,10 +159,5 @@ public class RegistrationTask extends AsyncTask<RegistrationModel, String, Strin
 
 	}
 
-	@Override
-	protected void onPostExecute(String result) {
-		// TODO Auto-generated method stub
-		super.onPostExecute(result);
-		pd.dismiss();
-	}
+	
 }

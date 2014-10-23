@@ -17,6 +17,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import com.example.dh.R;
 import com.example.datamodels.LoginModel;
+import com.example.datamodels.serialized.LoginResponse;
 //import com.example.datamodels.serialized.LoginResponse;
 import com.example.dh.Login;
 import com.example.dh.MainActivity;
@@ -25,7 +26,10 @@ import com.google.gson.Gson;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -35,6 +39,8 @@ public class LoginTask extends AsyncTask<LoginModel, String, String> {
 	Activity mLogin;
 	ProgressDialog pd;
 	String jsonResponseString;
+	LoginModel objLoginModel;
+	SharedPreferences sp;
 
 	public LoginTask(Login login) {
 		mLogin = login;
@@ -49,18 +55,24 @@ public class LoginTask extends AsyncTask<LoginModel, String, String> {
 
 		Gson gson = new Gson();
 
-		//LoginResponse response = gson.fromJson(result, LoginResponse.class);
+		LoginResponse response = gson.fromJson(result, LoginResponse.class);
 
 		pd.dismiss();
 
-		//if (response.success == 1) {
+		if (response.success == 1) {
 		Intent i = new Intent(mLogin, MainActivity.class);
 		mLogin.startActivity(i);
+		sp = PreferenceManager.getDefaultSharedPreferences(mLogin);
+		Editor ed = sp.edit();
+		ed.putString("user_name_login", objLoginModel.getUserName());
+		ed.putString("password_login", objLoginModel.getPassword());
+		ed.putString("user_name", response.user.name);
+		ed.apply();
 		//mLogin.overridePendingTransition(R.anim.side_down, R.anim.slide_up);
-		/*} else {
+		} else {
 			username.setError("Enter valid details");
 			password.setError(response.error_msg);
-		}*/
+		}
 	}
 
 	@Override
@@ -76,7 +88,7 @@ public class LoginTask extends AsyncTask<LoginModel, String, String> {
 	@Override
 	protected String doInBackground(LoginModel... params) {
 
-		LoginModel objLoginModel = params[0];
+		objLoginModel = params[0];
 
 		Log.d("username", "" + objLoginModel.getUserName());
 		Log.d("password", "" + objLoginModel.getPassword());

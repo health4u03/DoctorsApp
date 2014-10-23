@@ -67,7 +67,7 @@ public class PatientsLogin extends Fragment {
 						return;
 					}
 					//------------Send as per db structure
-					String userId="1";
+					String userId=patientsId.getText().toString();
 
 					PatientsParameterModel objPatientsParameterModel = new PatientsParameterModel();
 					objPatientsParameterModel.setPatientsId(userId);
@@ -75,8 +75,8 @@ public class PatientsLogin extends Fragment {
 					new PatientsProfileTask(getActivity()).execute(objPatientsParameterModel);
 
 			
-					Intent i = new Intent(getView().getContext(), PatientsProfile.class);
-					startActivity(i);
+					//Intent i = new Intent(getView().getContext(), PatientsProfile.class);
+					//startActivity(i);
 
 				}
 				

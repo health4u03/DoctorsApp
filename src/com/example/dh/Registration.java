@@ -80,10 +80,7 @@ public class Registration extends Activity implements OnClickListener {
 					return;
 				}
 			
-				Editor ed = sp.edit();
-				ed.putString("user_name_login", emailR.getText().toString());
-				ed.putString("password_login", passwordR.getText().toString());
-				ed.commit();
+				
 
 				// ------------------------------------------run a task to update details on db
 				RegistrationModel rModel = new RegistrationModel();
@@ -98,8 +95,7 @@ public class Registration extends Activity implements OnClickListener {
 			}
 			
 			//---Manipulate this intent when whole registration gets completed----------------
-			Intent i = new Intent(Registration.this, MainActivity.class);
-			startActivity(i);
+			
 	
 			//overridePendingTransition(R.anim.side_down, R.anim.slide_up);
 

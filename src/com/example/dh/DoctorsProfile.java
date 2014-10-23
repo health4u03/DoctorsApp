@@ -4,7 +4,10 @@ import com.example.asyctask.DoctorsProfileTask;
 import com.example.datamodels.DoctorsModel;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Fragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ public class DoctorsProfile extends Fragment {
 	ImageView photo ;
 	TextView userName, address, specialization, experience, contact;
 	Button showOnamp;
+	SharedPreferences sp;
 	
 	
 	@Override
@@ -33,7 +37,9 @@ public class DoctorsProfile extends Fragment {
 		experience = (TextView)v.findViewById(R.id.textViewExperience);
 		contact = (TextView)v.findViewById(R.id.textViewContactInfo);
 
+		sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		userName.setTypeface(sofiaPro);
+		userName.setText(sp.getString("user_name", "Suryansh Shukla"));
 		address.setTypeface(sofiaPro);
 		specialization.setTypeface(sofiaPro);
 		experience.setTypeface(sofiaPro);
