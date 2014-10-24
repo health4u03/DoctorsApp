@@ -1,25 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:orientation="vertical" >
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
         <TextView
-        android:id="@+id/textViewUserNamePatientPrescription"
+            android:id="@+id/textViewSrno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:text="SR NO."
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textViewParameterName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.5"
+            android:text="Parameter Name"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textViewParameterValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.5"
+            android:text="Parameter Value"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewParameter"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:descendantFocusability="beforeDescendants"
+        android:divider="@null"
+        android:stackFromBottom="false" >
+    </ListView>
+
+    <Button
+        android:id="@+id/buttonAddMoreParameter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#3498db"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-            android:textSize="25sp"
-        android:text="Welcome PatientName"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-        
-        <ListView
-        android:id="@+id/listViewParameters"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_states"
+        android:drawableLeft="@android:drawable/ic_input_add"
+        android:padding="10dp"
+        android:text="Add More"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
 </LinearLayout>

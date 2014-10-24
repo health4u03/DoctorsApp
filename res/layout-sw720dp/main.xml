@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:baselineAligned="false"
     android:orientation="horizontal" >
 
- <fragment
+    <fragment
         android:id="@+id/country_list_fragment"
         android:name="com.example.dh.CountryListFragment"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content" />
+        android:layout_width="220dp"
+        android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/detail_fragment_container"
@@ -18,5 +19,5 @@
         android:layout_weight="1"
         android:orientation="vertical" >
     </FrameLayout>
-    
+
 </LinearLayout>
