@@ -67,7 +67,7 @@ ListDataSymptoms objDataSymptoms;
 
 		final ViewHolderMainHome holderMain;
 		arrayListMedicines = new ArrayList<String>();
-			objDataSymptoms = new ListDataSymptoms();
+			objDataSymptoms = (ListDataSymptoms) this.getItem(position);
 		if(convertView == null)
 		{
 			holderMain = new ViewHolderMainHome();
@@ -88,10 +88,17 @@ ListDataSymptoms objDataSymptoms;
 
 		holderMain.editTextSymptomname.setTag(position);
 
-		holderMain.editTextSymptomname.setId(position);
+		holderMain.editTextSymptomname.setId(position);//objDataSymptoms
+		holderMain.editTextSymptomname.setText(objDataSymptoms.getParametername());
 
 		ListDataSymptoms m = movieItems.get(position);
 
+		if(!objDataSymptoms.isEditEnabled)
+		{
+			holderMain.editTextSymptomname.setEnabled(false);
+			holderMain.buttonDone.setTextOn("Edit");
+			holderMain.buttonDone.toggle();
+		}
 
 		holderMain.textViewCounter.setText(m.getTitle());
 		//holderMain.editTextSymptomname.setText(m.getParametername());
@@ -110,14 +117,13 @@ ListDataSymptoms objDataSymptoms;
 					if(holderMain.editTextSymptomname.getText().toString().equalsIgnoreCase("")){
 
 						Toast.makeText(activity, "Please Enter Symptom Name", Toast.LENGTH_SHORT).show();
-						holderMain.buttonDone.setTextOn("Done");
+						//holderMain.buttonDone.setTextOn("Done");
 						holderMain.buttonDone.toggle();
 						
 					}else{
 						Log.d("Symptom name values",""+holderMain.editTextSymptomname.getText().toString());
-						holderMain.buttonDone.setTextOn("Edit");
-						objDataSymptoms.setParametername(holderMain.editTextSymptomname.getText().toString());
 						
+						objDataSymptoms.setParametername(holderMain.editTextSymptomname.getText().toString());
 						disableFields();
 					}
 				}else{
@@ -129,12 +135,13 @@ ListDataSymptoms objDataSymptoms;
 			private void enableFields() {
 				// TODO Auto-generated method stub
 				holderMain.editTextSymptomname.setEnabled(true);
-
+				objDataSymptoms.isEditEnabled = true;
 			}
 			private void disableFields() {
 				// TODO Auto-generated method stub
 				holderMain.editTextSymptomname.setEnabled(false);
-
+				holderMain.buttonDone.setTextOn("Edit");
+				objDataSymptoms.isEditEnabled = false;
 			}
 		});
 		return convertView;

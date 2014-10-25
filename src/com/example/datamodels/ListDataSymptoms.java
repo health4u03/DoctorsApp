@@ -8,6 +8,7 @@ import java.util.ArrayList;
 	    private int year;
 	    private double rating;
 	    public static ArrayList<String> parameters = new ArrayList<String>();
+	    public boolean isEditEnabled = true;
 	 
 	    /**
 		 * @return the parameters
