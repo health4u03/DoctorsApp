@@ -73,5 +73,11 @@
     <string name="tag_get_diseases_diagnosed">get_disease_diagnosed_list</string>
     <string name="tag_save_disease_diagnosed">save_disease_diagnosed</string>
     <string name="tag_get_disease_diagnosed_from_id">get_disease_diagnosed_from_id</string>
-
+    <string name="sp_doctor_user_name">doctor_user_name</string>
+    <string name="sp_doctor_password">doctor_password</string>
+    <string name="sp_doctor_name">doctor_name</string>
+    <string name="sp_doctor_doctor_id">doctor_doctor_id</string>
+    <string name="sp_patient_name">patient_name</string>
+    <string name="sp_patient_id">patient_id</string>
+    <string name="sp_patient_person_id">patient_person_id</string>
 </resources>

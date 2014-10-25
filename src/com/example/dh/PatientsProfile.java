@@ -1,5 +1,9 @@
 package com.example.dh;
 
+import org.json.JSONException;
+
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
 import com.example.asyctask.DoctorsProfileTask;
 import com.example.asyctask.PatientsProfileTask;
 import com.example.datamodels.DoctorsModel;
@@ -7,13 +11,16 @@ import com.example.datamodels.PatientsParameterModel;
 import com.example.dh.CountryListFragmentPatient.ListFragmentItemClickListener;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
@@ -22,17 +29,33 @@ import android.view.View;
 @SuppressLint("NewApi")
 public class PatientsProfile extends Activity implements ListFragmentItemClickListener{
 
+	PrescriptionController pc;
+	SharedPreferences sp;
+	Prescription prescription;
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_patient);
 
-
 		// enable ActionBar app icon to behave as action to toggle nav drawer
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
-
-
+		
+		//initialize the prescription from the server;
+		sp = PreferenceManager.getDefaultSharedPreferences(this);
+		pc = new PrescriptionController(this);
+		try {
+			prescription = pc.getUnsavedPrescription(sp.getInt(this.getString(R.string.sp_patient_id), 1), 
+					sp.getInt(this.getString(R.string.sp_patient_person_id), 2), 
+					sp.getInt(this.getString(R.string.sp_doctor_doctor_id), 1));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

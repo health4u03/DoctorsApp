@@ -21,29 +21,33 @@ import com.example.datamodels.serialized.LoginResponse;
 import com.example.dh.MainActivity;
 import com.example.dh.PatientsLogin;
 import com.example.dh.PatientsProfile;
+import com.example.dh.R;
 import com.example.dh.util.Constants;
 import com.google.gson.Gson;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.EditText;
 
 public class PatientsProfileTask extends AsyncTask<PatientsParameterModel, String, String>{
 
-	Activity _patiensProfile;
+	Activity activity;
 	String jsonResponseString;
 	ProgressDialog pd;
 	PatientsParameterModel objPatientsParameterModel;
+	SharedPreferences sp;
+	EditText patientsId;
 
 	public PatientsProfileTask(Activity activity) {
 		// TODO Auto-generated constructor stub
-		_patiensProfile = activity;
+		this.activity = activity;
 	}
-
-
 
 	@Override
 	protected void onPostExecute(String result) {
@@ -56,22 +60,22 @@ public class PatientsProfileTask extends AsyncTask<PatientsParameterModel, Strin
 
 		pd.dismiss();
 
-		//if (response.success == 1) {
-		Intent i = new Intent(_patiensProfile, PatientsProfile.class);
-		_patiensProfile.startActivity(i);
-		/*
+		if (response.success == 1) {
+		Intent i = new Intent(activity, PatientsProfile.class);
+		activity.startActivity(i);
+		
+		sp = PreferenceManager.getDefaultSharedPreferences(activity);
+		
 		Editor ed = sp.edit();
-		ed.putString("user_name_login", objLoginModel.getUserName());
-		ed.putString("password_login", objLoginModel.getPassword());
-		ed.putString("user_name", response.user.name);
+		ed.putString(activity.getString(R.string.sp_patient_name), response.user.name);
+		ed.putInt(activity.getString(R.string.sp_patient_id), response.user.patient_id);
+		ed.putInt(activity.getString(R.string.sp_patient_person_id), response.user.person_id);
 		ed.apply();
 		//mLogin.overridePendingTransition(R.anim.side_down, R.anim.slide_up);
 		} else {
-			username.setError("Enter valid details");
-			password.setError(response.error_msg);
+			patientsId = (EditText)activity.findViewById(R.id.editTextPatientsUserName);
+			patientsId.setError(response.error_msg);
 		}
-		*/
-		
 	}
 
 
@@ -80,7 +84,7 @@ public class PatientsProfileTask extends AsyncTask<PatientsParameterModel, Strin
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
 		super.onPreExecute();
-		pd= new ProgressDialog(_patiensProfile);
+		pd= new ProgressDialog(activity);
 		pd.setMessage("Please Wait..");
 		pd.setCancelable(false);
 		//	 pd.show();

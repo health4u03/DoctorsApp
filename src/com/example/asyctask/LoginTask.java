@@ -64,9 +64,10 @@ public class LoginTask extends AsyncTask<LoginModel, String, String> {
 		mLogin.startActivity(i);
 		sp = PreferenceManager.getDefaultSharedPreferences(mLogin);
 		Editor ed = sp.edit();
-		ed.putString("user_name_login", objLoginModel.getUserName());
-		ed.putString("password_login", objLoginModel.getPassword());
-		ed.putString("user_name", response.user.name);
+		ed.putString(mLogin.getString(R.string.sp_doctor_user_name), objLoginModel.getUserName());
+		ed.putString(mLogin.getString(R.string.sp_doctor_password), objLoginModel.getPassword());
+		ed.putString(mLogin.getString(R.string.sp_doctor_name), response.user.name);
+		ed.putInt(mLogin.getString(R.string.sp_doctor_doctor_id), response.user.doctor_id);
 		ed.apply();
 		//mLogin.overridePendingTransition(R.anim.side_down, R.anim.slide_up);
 		} else {
