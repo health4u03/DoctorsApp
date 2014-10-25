@@ -2,6 +2,8 @@ package com.example.dh;
 
 import java.util.ArrayList;
 
+import com.erxproject.erx.model.Prescription;
+import com.erxproject.erx.model.prescription.Disease;
 import com.example.customadapter.CustomListAddDisease;
 import com.example.customadapter.CustomListAddSymptoms;
 import com.example.datamodels.ListDataDisease;
@@ -29,7 +31,7 @@ import android.widget.TextView;
 public class Disease_Diagnosed extends Fragment implements OnClickListener {
 
 
-
+	Prescription p;
 	String addedDisease;
 	ListView DiseaseList;
 	// Defined Array values to show in ListView
@@ -40,7 +42,7 @@ public class Disease_Diagnosed extends Fragment implements OnClickListener {
 	ArrayList<ListDataDisease> myList = new ArrayList<ListDataDisease>();
 	CustomListAddDisease adapter;
 	ListDataDisease objDataDisease;
-	int counter=1;
+	int counter=0;
 
 
 	@Override
@@ -76,22 +78,34 @@ public class Disease_Diagnosed extends Fragment implements OnClickListener {
 	private void init() {
 		// TODO Auto-generated method stub
 
-		objDataDisease =new ListDataDisease();
-		objDataDisease.setTitle("1");
-		myList.add(objDataDisease);
-
+		p = Prescription.get(getActivity());
+		/*
+		ArrayList<Disease> diseases = p.getDisease();
+		
+		for(Disease d: diseases){
+			objDataDisease =new ListDataDisease();
+			objDataDisease.setTitle("" + (counter+1));
+			objDataDisease.setParametername(d.getDisease());
+			myList.add(objDataDisease);
+			counter++;
+		}
+		*/
+		if(myList.isEmpty()) {
+			getDataList();
+		}
 	}
 
 	private void getDataList() {
 		// TODO Auto-generated method stub
-		if(counter!=0)
-		{		
+	
 			objDataDisease =new ListDataDisease();
+			objDataDisease.setTitle(""+(counter+1));
+			myList.add(counter, objDataDisease);
 			counter++;
-			objDataDisease.setTitle(""+counter);
-			myList.add(counter-1, objDataDisease);
-		}
-		adapter.notifyDataSetChanged();
+
+			if(myList.size()>1){
+				adapter.notifyDataSetChanged();
+			}
 	}
 	@Override
 	public void onClick(View v) {

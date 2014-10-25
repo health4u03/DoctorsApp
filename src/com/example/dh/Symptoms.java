@@ -78,7 +78,8 @@ public class Symptoms extends Fragment implements OnClickListener{
 
 	private void init() {
 		// TODO Auto-generated method stub
-			
+			counter = 0;
+			myList.clear();
 		p = Prescription.get(getActivity());
 		ArrayList<Symptom> symptoms = p.getSymptoms();
 		
@@ -89,6 +90,9 @@ public class Symptoms extends Fragment implements OnClickListener{
 			objDataSymptoms.isEditEnabled = false;
 			myList.add(objDataSymptoms);
 			counter++;
+		}
+		if(myList.isEmpty()) {
+			getDataList();
 		}
 	}
 
@@ -114,14 +118,15 @@ public class Symptoms extends Fragment implements OnClickListener{
 
 	private void getDataList() {
 		// TODO Auto-generated method stub
-		if(counter!=0)
-		{		
+	
 			objDataSymptoms =new ListDataSymptoms();
 			objDataSymptoms.setTitle(""+(counter+1));
 			myList.add(counter, objDataSymptoms);
 			counter++;
-		}
-		adapter.notifyDataSetChanged();
+
+			if(myList.size()>1){
+				adapter.notifyDataSetChanged();
+			}
 	}
 
 	/*	@Override

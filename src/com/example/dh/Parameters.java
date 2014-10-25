@@ -79,6 +79,8 @@ public class Parameters extends Fragment implements OnClickListener {
 
 	private void init() {
 		
+		counter = 0;
+		myList.clear();
 		p = Prescription.get(getActivity());
 		
 		ArrayList<Parameter> parameters = p.getParameters();
@@ -91,6 +93,9 @@ public class Parameters extends Fragment implements OnClickListener {
 			objDataParameters.setParameterValue(parameter.getmParameterValue());
 			myList.add(objDataParameters);
 			counter++;
+		}
+		if(myList.isEmpty()) {
+			getDataInList();
 		}
 	}
 
@@ -116,13 +121,13 @@ public class Parameters extends Fragment implements OnClickListener {
 	}
 	private void getDataInList() {
 		// TODO Auto-generated method stub
-		if(counter!=0)
-		{
+
 			objDataParameters =new ListDataParameters();
 			objDataParameters.setTitle(""+(counter+1));
 			myList.add(counter, objDataParameters);
 			counter++;
-		}
-		adapter.notifyDataSetChanged();
+			if(myList.size()>1){
+				adapter.notifyDataSetChanged();
+			}
 	}
 }

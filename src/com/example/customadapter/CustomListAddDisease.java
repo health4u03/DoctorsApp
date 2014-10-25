@@ -3,6 +3,8 @@ package com.example.customadapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
 import com.example.datamodels.ListDataDisease;
 import com.example.datamodels.ListDataParameters;
 import com.example.datamodels.ListDataSymptoms;
@@ -26,7 +28,8 @@ import android.widget.ToggleButton;
 
 public class CustomListAddDisease extends BaseAdapter {
 
-
+	PrescriptionController pc;
+	Prescription p;
 	private Context activity;
 	private LayoutInflater inflater;
 	private List<ListDataDisease> movieItems;
@@ -61,8 +64,6 @@ public class CustomListAddDisease extends BaseAdapter {
 		TextView textViewCounter;
 		ToggleButton buttonDone;
 		EditText editTextDiseasename;
-
-
 	}
 	@Override
 	public View getView(final int position, View convertView, final ViewGroup parent) {
@@ -79,8 +80,6 @@ public class CustomListAddDisease extends BaseAdapter {
 
 			holderMain.editTextDiseasename = (EditText)convertView.findViewById(R.id.editTextAddDisease);
 			holderMain.buttonDone = (ToggleButton)convertView.findViewById(R.id.buttonDoneDisease);
-
-
 			convertView.setTag(holderMain);
 
 		}else
@@ -92,11 +91,10 @@ public class CustomListAddDisease extends BaseAdapter {
 
 		holderMain.editTextDiseasename.setId(position);
 
-		ListDataDisease m = movieItems.get(position);
-
+		final ListDataDisease m = movieItems.get(position);
 
 		holderMain.textViewCounter.setText(m.getTitle());
-		//holderMain.editTextSymptomname.setText(m.getParametername());
+		holderMain.editTextDiseasename.setText(m.getParametername());
 
 		holderMain.buttonDone.setTag(position);
 		holderMain.buttonDone.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -120,6 +118,16 @@ public class CustomListAddDisease extends BaseAdapter {
 					}else{
 						holderMain.buttonDone.setTextOn("Edit");
 
+						pc = new PrescriptionController(activity);
+						p = Prescription.get(activity);
+						
+						int historyId = p.getHistoryId();
+						
+						//int diseaseId = pc.saveDiseaseDiagnosed(historyId, holderMain.editTextDiseasename.getText().toString());
+						
+						//p.getDisease().add(pc.getDiseaseFromId(diseaseId));
+						
+						m.setParametername(holderMain.editTextDiseasename.getText().toString());
 						//objClinicModel.setUserNames(holderMain.autoTextView.getText().toString());
 						disableFields();
 					}

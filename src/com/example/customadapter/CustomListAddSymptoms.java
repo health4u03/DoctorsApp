@@ -101,7 +101,7 @@ ListDataSymptoms objDataSymptoms;
 		{
 			holderMain.editTextSymptomname.setEnabled(false);
 			holderMain.buttonDone.setTextOn("Edit");
-			holderMain.buttonDone.toggle();
+			//holderMain.buttonDone.toggle();
 		}
 
 		holderMain.textViewCounter.setText(m.getTitle());
