@@ -2,6 +2,9 @@ package com.example.dh;
 
 import java.util.ArrayList;
 
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
+import com.erxproject.erx.model.prescription.Parameter;
 import com.example.customadapter.CustomListAddMedicines;
 import com.example.customadapter.CustomListAddParameters;
 import com.example.datamodels.ListDataMedicines;
@@ -40,6 +43,7 @@ import android.widget.TextView;
 @SuppressLint("NewApi")
 public class Parameters extends Fragment implements OnClickListener {
 
+	Prescription p;
 	String addedParameters;
 	ListView ParametersList;
 	// Defined Array values to show in ListView
@@ -47,7 +51,7 @@ public class Parameters extends Fragment implements OnClickListener {
 	ArrayList<String> arrayListParameters ;
 	EditText textViewKey,textViewValues;
 	Button buttonAdd,addMore;
-	int counter=2;
+	int counter=0;
 	ArrayList<ListDataParameters> myList = new ArrayList<ListDataParameters>();
 	CustomListAddParameters adapter;
 	ListDataParameters objDataParameters;
@@ -74,17 +78,20 @@ public class Parameters extends Fragment implements OnClickListener {
 	}
 
 	private void init() {
-
+		
+		p = Prescription.get(getActivity());
+		
+		ArrayList<Parameter> parameters = p.getParameters();
+		
+		for(Parameter parameter: parameters)
+		{
 			objDataParameters =new ListDataParameters();
-			objDataParameters.setTitle("1");
-			objDataParameters.setParametername("Temperature");
+			objDataParameters.setTitle("" + (counter+1));
+			objDataParameters.setParametername(parameter.getmParameterType());
+			objDataParameters.setParameterValue(parameter.getmParameterValue());
 			myList.add(objDataParameters);
-	
-			objDataParameters =new ListDataParameters();
-			objDataParameters.setTitle("2");
-			objDataParameters.setParametername("Blood Pressure");
-			myList.add(objDataParameters);
-	
+			counter++;
+		}
 	}
 
 	@Override
@@ -101,11 +108,7 @@ public class Parameters extends Fragment implements OnClickListener {
 		switch(v.getId()){
 
 		case R.id.buttonAddMoreParameter:
-
-
-
 			getDataInList();
-
 			break;
 
 		}
@@ -114,11 +117,11 @@ public class Parameters extends Fragment implements OnClickListener {
 	private void getDataInList() {
 		// TODO Auto-generated method stub
 		if(counter!=0)
-		{		
+		{
 			objDataParameters =new ListDataParameters();
+			objDataParameters.setTitle(""+(counter+1));
+			myList.add(counter, objDataParameters);
 			counter++;
-			objDataParameters.setTitle(""+counter);
-			myList.add(counter-1, objDataParameters);
 		}
 		adapter.notifyDataSetChanged();
 	}

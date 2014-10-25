@@ -35,7 +35,6 @@ import android.widget.ToggleButton;
 public class Symptoms extends Fragment implements OnClickListener{
 
 	Prescription p;
-	PrescriptionController pc;
 	String addedSymptoms;
 	ListView symptomsList;
 	String[] values ;
@@ -80,7 +79,6 @@ public class Symptoms extends Fragment implements OnClickListener{
 	private void init() {
 		// TODO Auto-generated method stub
 			
-		pc = new PrescriptionController(getActivity());
 		p = Prescription.get(getActivity());
 		ArrayList<Symptom> symptoms = p.getSymptoms();
 		
@@ -88,6 +86,7 @@ public class Symptoms extends Fragment implements OnClickListener{
 			objDataSymptoms =new ListDataSymptoms();
 			objDataSymptoms.setTitle("" + (counter+1));
 			objDataSymptoms.setParametername(s.getDetails());
+			objDataSymptoms.isEditEnabled = false;
 			myList.add(objDataSymptoms);
 			counter++;
 		}
@@ -118,7 +117,7 @@ public class Symptoms extends Fragment implements OnClickListener{
 		if(counter!=0)
 		{		
 			objDataSymptoms =new ListDataSymptoms();
-			objDataSymptoms.setTitle(""+counter);
+			objDataSymptoms.setTitle(""+(counter+1));
 			myList.add(counter, objDataSymptoms);
 			counter++;
 		}

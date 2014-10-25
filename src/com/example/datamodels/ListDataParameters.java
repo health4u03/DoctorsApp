@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 	public class ListDataParameters {
-	    private String title, thumbnailUrl,parametername;
+	    private String title, thumbnailUrl,parametername,parameterValue;
 	    private int year;
 	    private double rating;
 	    private ArrayList<String> genre;
@@ -73,6 +73,14 @@ import java.util.ArrayList;
 	    public void setGenre(ArrayList<String> genre) {
 	        this.genre = genre;
 	    }
+
+		public String getParameterValue() {
+			return parameterValue;
+		}
+
+		public void setParameterValue(String parameterValue) {
+			this.parameterValue = parameterValue;
+		}
 	 
 	}
 

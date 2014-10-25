@@ -3,6 +3,8 @@ package com.example.customadapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
 import com.example.datamodels.ListDataParameters;
 import com.example.datamodels.ParameterModel;
 import com.example.dh.R;
@@ -29,6 +31,8 @@ public class CustomListAddParameters extends BaseAdapter {
 	private List<ListDataParameters> movieItems;
 	ArrayList<String> arrayListMedicines ;
 	ParameterModel objParameterModel;
+	Prescription p;
+	PrescriptionController pc;
 
 	public CustomListAddParameters(Context context, ArrayList<ListDataParameters> myList) {
 		inflater = LayoutInflater.from(context);
@@ -94,11 +98,12 @@ public class CustomListAddParameters extends BaseAdapter {
 		holderMain.editTextParametername.setId(position);
 		holderMain.editTextParameterValue.setId(position);
 
-		ListDataParameters m = movieItems.get(position);
+		final ListDataParameters m = movieItems.get(position);
 
 
 		holderMain.textViewCounter.setText(m.getTitle());
 		holderMain.editTextParametername.setText(m.getParametername());
+		holderMain.editTextParameterValue.setText(m.getParameterValue());
 
 		Log.d("pso", ""+position);
 
@@ -140,7 +145,17 @@ public class CustomListAddParameters extends BaseAdapter {
 
 						//objClinicModel.setUserNames(holderMain.autoTextView.getText().toString());
 						objParameterModel.setPatameters(holderMain.editTextParametername.getText().toString(), holderMain.editTextParameterValue.getText().toString());
-
+						m.setParametername(holderMain.editTextParametername.getText().toString());
+						m.setParameterValue(holderMain.editTextParameterValue.getText().toString());
+						
+						p = Prescription.get(activity);
+						
+						int historyId = p.getHistoryId();
+						pc = new PrescriptionController(activity);
+						
+						int parameterId = pc.saveParameter(historyId, holderMain.editTextParametername.getText().toString(), holderMain.editTextParameterValue.getText().toString());
+						p.getParameters().add(pc.getParameter(parameterId));
+						
 						disableFields();
 						Log.d("get array", ""+objParameterModel.getparameters());
 

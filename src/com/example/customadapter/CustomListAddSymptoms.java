@@ -132,6 +132,8 @@ ListDataSymptoms objDataSymptoms;
 						pc = new PrescriptionController(activity);
 						int symptomId = pc.saveSymptom(historyId, holderMain.editTextSymptomname.getText().toString());
 						
+						p.getSymptoms().add(pc.getSymptom(symptomId));
+						
 						objDataSymptoms.setParametername(holderMain.editTextSymptomname.getText().toString());
 						disableFields();
 					}
