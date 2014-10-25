@@ -2,6 +2,9 @@ package com.example.dh;
 
 import java.util.ArrayList;
 
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
+import com.erxproject.erx.model.prescription.Symptom;
 import com.example.customadapter.CustomListAddParameters;
 import com.example.customadapter.CustomListAddSymptoms;
 import com.example.datamodels.ListDataParameters;
@@ -31,6 +34,8 @@ import android.widget.ToggleButton;
 @SuppressLint("NewApi")
 public class Symptoms extends Fragment implements OnClickListener{
 
+	Prescription p;
+	PrescriptionController pc;
 	String addedSymptoms;
 	ListView symptomsList;
 	String[] values ;
@@ -39,7 +44,7 @@ public class Symptoms extends Fragment implements OnClickListener{
 	ArrayList<ListDataSymptoms> myList = new ArrayList<ListDataSymptoms>();
 	CustomListAddSymptoms adapter;
 	ListDataSymptoms objDataSymptoms;
-	int counter=1;
+	int counter=0;
 	
 	/* (non-Javadoc)
 	 * @see android.app.Fragment#onCreate(android.os.Bundle)
@@ -74,12 +79,18 @@ public class Symptoms extends Fragment implements OnClickListener{
 
 	private void init() {
 		// TODO Auto-generated method stub
+			
+		pc = new PrescriptionController(getActivity());
+		p = Prescription.get(getActivity());
+		ArrayList<Symptom> symptoms = p.getSymptoms();
 		
-		objDataSymptoms =new ListDataSymptoms();
-		objDataSymptoms.setTitle("1");
-		myList.add(objDataSymptoms);
-
-		
+		for (Symptom s : symptoms) {
+			objDataSymptoms =new ListDataSymptoms();
+			objDataSymptoms.setTitle("" + (counter+1));
+			objDataSymptoms.setParametername(s.getDetails());
+			myList.add(objDataSymptoms);
+			counter++;
+		}
 	}
 
 	/*@Override
@@ -107,9 +118,9 @@ public class Symptoms extends Fragment implements OnClickListener{
 		if(counter!=0)
 		{		
 			objDataSymptoms =new ListDataSymptoms();
-			counter++;
 			objDataSymptoms.setTitle(""+counter);
-			myList.add(counter-1, objDataSymptoms);
+			myList.add(counter, objDataSymptoms);
+			counter++;
 		}
 		adapter.notifyDataSetChanged();
 	}

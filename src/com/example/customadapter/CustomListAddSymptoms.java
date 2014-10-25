@@ -3,6 +3,8 @@ package com.example.customadapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
 import com.example.datamodels.ListDataParameters;
 import com.example.datamodels.ListDataSymptoms;
 import com.example.dh.R;
@@ -24,6 +26,8 @@ import android.widget.ToggleButton;
 public class CustomListAddSymptoms extends BaseAdapter {
 
 
+	private PrescriptionController pc;
+	private Prescription p;
 	private Context activity;
 	private LayoutInflater inflater;
 	private List<ListDataSymptoms> movieItems;
@@ -122,6 +126,11 @@ ListDataSymptoms objDataSymptoms;
 						
 					}else{
 						Log.d("Symptom name values",""+holderMain.editTextSymptomname.getText().toString());
+						
+						p = Prescription.get(activity);
+						int historyId = p.getHistoryId();
+						pc = new PrescriptionController(activity);
+						int symptomId = pc.saveSymptom(historyId, holderMain.editTextSymptomname.getText().toString());
 						
 						objDataSymptoms.setParametername(holderMain.editTextSymptomname.getText().toString());
 						disableFields();
