@@ -123,9 +123,9 @@ public class CustomListAddDisease extends BaseAdapter {
 						
 						int historyId = p.getHistoryId();
 						
-						//int diseaseId = pc.saveDiseaseDiagnosed(historyId, holderMain.editTextDiseasename.getText().toString());
+						int diseaseId = pc.saveDiseaseDiagnosed(historyId, holderMain.editTextDiseasename.getText().toString());
 						
-						//p.getDisease().add(pc.getDiseaseFromId(diseaseId));
+						p.getDisease().add(pc.getDiseaseFromId(diseaseId));
 						
 						m.setParametername(holderMain.editTextDiseasename.getText().toString());
 						//objClinicModel.setUserNames(holderMain.autoTextView.getText().toString());

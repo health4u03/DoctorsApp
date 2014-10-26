@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class ListDataMedicines {
 	private String title, thumbnailUrl,medicineName,medicineDosage;
+	private boolean isMorning,isAfternoon,isEvening,isNight;
 	public static ArrayList<String> medicineList =new ArrayList<String>();
 	
 	/**
@@ -88,6 +89,38 @@ public class ListDataMedicines {
 	 public void setThumbnailUrl(String thumbnailUrl) {
 		 this.thumbnailUrl = thumbnailUrl;
 	 }
+
+	public boolean isEvening() {
+		return isEvening;
+	}
+
+	public void setEvening(boolean isEvening) {
+		this.isEvening = isEvening;
+	}
+
+	public boolean isMorning() {
+		return isMorning;
+	}
+
+	public void setMorning(boolean isMorning) {
+		this.isMorning = isMorning;
+	}
+
+	public boolean isAfternoon() {
+		return isAfternoon;
+	}
+
+	public void setAfternoon(boolean isAfternoon) {
+		this.isAfternoon = isAfternoon;
+	}
+
+	public boolean isNight() {
+		return isNight;
+	}
+
+	public void setNight(boolean isNight) {
+		this.isNight = isNight;
+	}
 
 
 }

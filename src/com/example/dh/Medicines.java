@@ -2,6 +2,8 @@ package com.example.dh;
 
 import java.util.ArrayList;
 
+import com.erxproject.erx.model.Prescription;
+import com.erxproject.erx.model.prescription.PrescriptionMedicine;
 import com.example.customadapter.CustomListAddMedicines;
 import com.example.datamodels.ListDataMedicines;
 
@@ -38,8 +40,7 @@ import android.widget.TextView;
 @SuppressLint("NewApi")
 public class Medicines extends Fragment implements OnClickListener {
 
-
-
+	Prescription p;
 	String addedMedicines;
 	ListView MedicinesList;
 	// Defined Array values to show in ListView
@@ -49,7 +50,7 @@ public class Medicines extends Fragment implements OnClickListener {
 	CustomListAddMedicines adapter;
 	ArrayList<ListDataMedicines> myList = new ArrayList<ListDataMedicines>();
 	ListDataMedicines objListDataMedicines;
-	int counter=3;
+	int counter=0;
 
 
 	@Override
@@ -69,9 +70,6 @@ public class Medicines extends Fragment implements OnClickListener {
 
 		addMore = (Button)v.findViewById(R.id.buttonAddMore);
 
-
-
-
 		addMore.setOnClickListener(this);
 		init();
 		Log.d("suize", ""+myList.size());
@@ -83,23 +81,39 @@ public class Medicines extends Fragment implements OnClickListener {
 
 	private void init() {
 		// TODO Auto-generated method stub
-		for(int i=1;i<4;i++){
+		
+		p = Prescription.get(getActivity());
+		counter = 0;
+		ArrayList<PrescriptionMedicine> medicines = p.getMedicine();
+		
+		for(PrescriptionMedicine m: medicines){
 			objListDataMedicines =new ListDataMedicines();
-			objListDataMedicines.setTitle(""+i);
+			objListDataMedicines.setTitle(""+(counter+1));
+			objListDataMedicines.setMedicineName(m.getMedicineName());
+			objListDataMedicines.setMorning(m.isMorning());
+			objListDataMedicines.setAfternoon(m.isAfternoon());
+			objListDataMedicines.setEvening(m.isEvening());
+			objListDataMedicines.setNight((m.isNight()));
 			myList.add(objListDataMedicines);
+			counter++;
+		}
+		
+		if(medicines.size()==0)
+		{
+			getDataInList();
 		}
 	}
 
 	private void getDataInList() {
 		// TODO Auto-generated method stub
-		if(counter!=0)
-		{		
 			objListDataMedicines =new ListDataMedicines();
+			objListDataMedicines.setTitle(""+(counter+1));
+			myList.add(counter, objListDataMedicines);
 			counter++;
-			objListDataMedicines.setTitle(""+counter);
-			myList.add(counter-1, objListDataMedicines);
-		}
-		adapter.notifyDataSetChanged();
+			if(myList.size()>2)
+			{
+				adapter.notifyDataSetChanged();
+			}
 	}
 
 	

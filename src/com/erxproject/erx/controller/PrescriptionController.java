@@ -458,7 +458,7 @@ public class PrescriptionController {
 
 	}
 
-	public int savePrescriptionMedicine(int historyId, int medicineId,
+	public int savePrescriptionMedicine(int historyId, int medicineId, String medicineName, 
 			boolean morning, boolean afternoon, boolean evening, boolean night) {
 		JSONObject json;
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -466,6 +466,7 @@ public class PrescriptionController {
 		params.add(new BasicNameValuePair(mContext
 				.getString(R.string.key_history_id), "" + historyId));
 		params.add(new BasicNameValuePair("medicine_id", "" + medicineId));
+		params.add(new BasicNameValuePair("medicine_name", "" + medicineName));
 		if (morning)
 			params.add(new BasicNameValuePair("morning", "Y"));
 		else

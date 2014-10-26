@@ -3,6 +3,8 @@ package com.example.customadapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erxproject.erx.controller.PrescriptionController;
+import com.erxproject.erx.model.Prescription;
 import com.example.datamodels.ListDataMedicines;
 import com.example.datamodels.MedicinesClinicModel;
 import com.example.dh.R;
@@ -26,7 +28,8 @@ import android.widget.ToggleButton;
 
 public class CustomListAddMedicines extends BaseAdapter {
 
-
+	private PrescriptionController pc;
+	private Prescription p;
 	private Context activity;
 	private LayoutInflater inflater;
 	private List<ListDataMedicines> movieItems;
@@ -73,7 +76,7 @@ public class CustomListAddMedicines extends BaseAdapter {
 		final ViewHolderMainHome holderMain;
 		arrayListMedicines = new ArrayList<String>();
 		objClinicModel = new MedicinesClinicModel();
-		objListDataMedicines = new ListDataMedicines();
+		objListDataMedicines = movieItems.get(position);
 		if(convertView == null)
 		{
 			holderMain = new ViewHolderMainHome();
@@ -99,12 +102,12 @@ public class CustomListAddMedicines extends BaseAdapter {
 		holderMain.autoTextView.setTag(position);
 
 		holderMain.autoTextView.setId(position);
-
-		ListDataMedicines m = movieItems.get(position);
-
-
-		holderMain.textViewCounter.setText(m.getTitle());
-
+		holderMain.autoTextView.setText(objListDataMedicines.getMedicineName());
+		holderMain.textViewCounter.setText(objListDataMedicines.getTitle());
+		holderMain.checkBoxMorning.setChecked(objListDataMedicines.isMorning());
+		holderMain.checkBoxAfternoon.setChecked(objListDataMedicines.isAfternoon());
+		holderMain.checkBoxEvening.setChecked(objListDataMedicines.isEvening());
+		holderMain.checkBoxNight.setChecked(objListDataMedicines.isNight());
 
 		holderMain.buttonDone.setTag(position);
 		holderMain.buttonDone.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -129,9 +132,22 @@ public class CustomListAddMedicines extends BaseAdapter {
 						objClinicModel.setUserNames(holderMain.autoTextView.getText().toString());
 						getValuesOfCheckboxes();
 						objListDataMedicines.setMedicineName(holderMain.autoTextView.getText().toString());
+						objListDataMedicines.setMorning(holderMain.checkBoxMorning.isChecked());
+						objListDataMedicines.setAfternoon(holderMain.checkBoxAfternoon.isChecked());
+						objListDataMedicines.setEvening(holderMain.checkBoxEvening.isChecked());
+						objListDataMedicines.setNight(holderMain.checkBoxNight.isChecked());
+						
+						pc = new PrescriptionController(activity);
+						p = Prescription.get(activity);
+						int medicineDataId = pc.savePrescriptionMedicine(p.getHistoryId(), 0, holderMain.autoTextView.getText().toString(), 
+								holderMain.checkBoxMorning.isChecked(), 
+								holderMain.checkBoxAfternoon.isChecked(), 
+								holderMain.checkBoxEvening.isChecked(),
+								holderMain.checkBoxNight.isChecked());
+								
+						p.getMedicine().add(pc.getPrescriptionMedicineFromId(medicineDataId));
 						
 						disabledFields();
-
 					}
 
 					Log.d("Array is:",""+objClinicModel.getUserNames());

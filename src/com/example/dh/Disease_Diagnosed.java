@@ -79,7 +79,7 @@ public class Disease_Diagnosed extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 
 		p = Prescription.get(getActivity());
-		/*
+		
 		ArrayList<Disease> diseases = p.getDisease();
 		
 		for(Disease d: diseases){
@@ -89,7 +89,7 @@ public class Disease_Diagnosed extends Fragment implements OnClickListener {
 			myList.add(objDataDisease);
 			counter++;
 		}
-		*/
+		
 		if(myList.isEmpty()) {
 			getDataList();
 		}
